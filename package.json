@@ -1,5 +1,6 @@
 {
   "name": "test-work",
+  "homepage": "https://Djiypyk.github.io/test-work",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,13 +12,14 @@
     "@types/prettier": "^2.6.0",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.20.0",
+    "@types/react-redux": "^7.1.24",
     "axios": "^0.26.1",
     "eslint": "^8.14.0",
-    "eslint-config-airbnb-typescript": "^17.0.0",
+    "gh-pages-deploy": "^0.5.1",
     "prettier": "^2.6.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-redux": "^8.0.1",
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
     "redux-saga": "^1.1.3",
@@ -29,7 +31,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -50,18 +54,6 @@
     ]
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.15.0",
-    "@typescript-eslint/parser": "^5.15.0",
-    "eslint": "^8.11.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-import-resolver-typescript": "^2.5.0",
-    "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.29.4",
-    "eslint-plugin-react-hooks": "^4.3.0",
-    "gh-pages": "^3.2.3",
-    "prettier": "^2.6.0"
+    "gh-pages": "^3.2.3"
   }
 }
