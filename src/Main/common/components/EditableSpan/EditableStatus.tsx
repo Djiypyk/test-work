@@ -41,7 +41,9 @@ export const EditableStatus = () => {
                     </div>
 
             }
-
+            <div className={styles.status_message}>
+                <p>Прежде чем действовать, надо понять</p>
+            </div>
 
         </div>
     )
