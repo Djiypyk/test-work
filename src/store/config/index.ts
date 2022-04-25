@@ -12,11 +12,13 @@ const rootReducer = combineReducers({
 })
 
 export const store = createStore(rootReducer, applyMiddleware(sagaMiddleware))
+
 sagaMiddleware.run(rootSaga)
+
+//type
+
 export type AppRootStateType = ReturnType<typeof rootReducer>
 export type AppDispatch = typeof store.dispatch
-export const useAppSelector: TypedUseSelectorHook<AppRootStateType> = useSelector
-export const useAppDispatch = (): Dispatch => useDispatch<AppDispatch>()
 
 // @ts-ignore
 window.store = store

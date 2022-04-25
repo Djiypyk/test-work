@@ -1,7 +1,8 @@
 import styles from "./Header.module.scss";
 import {EditableStatus} from "../../Main/common/components/EditableSpan/EditableStatus";
 import React from "react";
-import {useAppSelector} from "../../store/config/index";
+import {useAppSelector} from "../../utils/customHook";
+
 
 export const Header = () => {
     const userName = useAppSelector<string>(state => state.app.name)
