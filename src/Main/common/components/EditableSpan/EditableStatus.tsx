@@ -1,10 +1,9 @@
 import {useAppDispatch, useAppSelector} from "../../../../store/config/index";
-import React, {ChangeEvent, useState} from "react";
+import React, {ChangeEvent, memo, useState} from "react";
 import styles from './EditableStatus.module.scss'
 import {changeStatus} from "../../../../store/reducer/formReducer";
 
-
-export const EditableStatus = () => {
+export const EditableStatus = memo(() => {
     const userStatus = useAppSelector<string>(state => state.app.status)
     const [editMode, setEditMode] = useState<boolean>(false)
     const [newStatus, setNewStatus] = useState<string>(userStatus)
@@ -20,31 +19,34 @@ export const EditableStatus = () => {
         setEditMode(false)
     }
     const onChangeStatus = (): void => {
-        offEditMode()
         dispatch(changeStatus(newStatus))
+        offEditMode()
     }
 
     return (
         <div>
             {
-                editMode ? <div className={styles.status_hello}>
-                        <input autoFocus type="text"
-                               value={newStatus}
-                               onChange={onChangeNewStatus}
-                               onBlur={offEditMode}/>
-                        <button onClick={onChangeStatus}>Подтвердить смену статуса</button>
-                    </div>
+                editMode ?
+                        <div className={styles.status_block}>
+                            <div className={styles.status_message}>
+                                <input autoFocus type="text"
+                                       value={newStatus}
+                                       onChange={onChangeNewStatus}
+                                />
+                                <button className={styles.status_btn} onClick={onChangeStatus}>Подтвердить</button>
+                            </div>
+                        </div>
                     :
-                    <div className={styles.status_hello}>
-                        <h2>Здравствуйте, <span>{userStatus}</span></h2>
-                        <button className={styles.status_btn} onClick={onEditMode}>Сменить статус</button>
+                    <div className={styles.status_block}>
+                        <div className={styles.status_message}>
+                            <p>{userStatus}</p>
+                            <button className={styles.status_btn} onClick={onEditMode}>Сменить статус</button>
+                        </div>
                     </div>
 
             }
-            <div className={styles.status_message}>
-                <p>Прежде чем действовать, надо понять</p>
-            </div>
+
 
         </div>
     )
-}
+})

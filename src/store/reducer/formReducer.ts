@@ -1,5 +1,9 @@
+import {filterCities} from "../../utils/cities";
+
 const initialState = {
-    status: 'Человек №3596941'
+    name: 'Человек №3596941',
+    status: 'Прежде чем действовать, надо понять',
+    cities: filterCities
 }
 
 export const formReducer = (state: InitialStateType = initialState, action: ActionsType,): InitialStateType => {

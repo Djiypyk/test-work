@@ -1,13 +1,17 @@
 import React from 'react'
 
 import styles from './App.module.scss'
-import {Form} from "./Feauters/Form";
+
+import {Header} from "./Feauters/Header/Header";
+import {Form} from "./Feauters/Form/Form";
+
 
 
 export const App = () => {
 
     return (
         <div className={styles.app_container}>
+            <Header/>
             <Form/>
         </div>)
 }

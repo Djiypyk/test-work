@@ -1,0 +1,16 @@
+.header {
+  margin-top: 90px;
+
+  & .header_hello {
+    & h2 {
+      color: #666666;
+      font-weight: 700;
+      font-size: 30px;
+
+      & span {
+        color: #000000;
+      }
+    }
+  }
+
+}
