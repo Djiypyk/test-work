@@ -17,14 +17,12 @@ export const Select: React.FC<SuperSelectPropsType> = memo((
 ) => {
     const mappedOptions: any[] | undefined = options ?
         options.map((el, i) =>
-            <option key={i} value={el}>{el}</option>) : options; // map options with key
+            <option key={i} value={el}>{el}</option>) : options;
 
     const onChangeCallback = (e: ChangeEvent<HTMLSelectElement>) => {
         let newValue = e.currentTarget.value
         onChange && onChange(e)
         onChangeOption && onChangeOption(newValue)
-
-        // onChange, onChangeOption
     }
 
     return (

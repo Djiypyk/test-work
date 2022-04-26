@@ -135,16 +135,23 @@
   & .div17 {
     grid-area: 8 / 2 / 9 / 3;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    & .form_checkbox{
+      outline: none;
+    }
+    & label {
+      margin-left: 20px;
+    }
   }
 
-  & .div18 {
-    grid-area: 9 / 2 / 10 / 3;
+  & .from_btnSubmit {
+    grid-area: 9 / 2 / 10 / 4;
     display: flex;
-    justify-content: space-between;
     font-size: 12px;
     color: #999999;
+    & p {
+      margin-left: 20px;
+    }
 
   }
 

@@ -5,6 +5,8 @@ import {getUnisS} from "../../store/saga/formSaga";
 import {useAppDispatch, useAppSelector} from "../../utils/customHook";
 import {useFormik} from "formik";
 import {Button} from "../../Main/common/components/Button/Button";
+import {setLastUpdateDate} from "../../store/reducer/formReducer";
+import {actualDate} from "../../utils/Date";
 
 export type FormParamsT = {
     status: string
@@ -18,8 +20,9 @@ export type FormParamsT = {
 }
 export const Form = memo(() => {
     const status = useAppSelector<string>(state => state.app.status)
-    const cities = useAppSelector<string[]>(state => state.app.cities)
+    const cities = useAppSelector<string[]>(state => state.app.cities.map(c=> c.city))
     const arrUni = useAppSelector<string[]>(state => state.app.arrayUniName)
+    const lastUpdateForm = useAppSelector<string>(state => state.app.lastUpdateForm)
     const dispatch = useAppDispatch()
     useEffect(() => {
         dispatch(getUnisS())
@@ -52,14 +55,15 @@ export const Form = memo(() => {
             checkbox: false
         },
         onSubmit: (values: FormParamsT) => {
+            dispatch(setLastUpdateDate(actualDate()))
             console.log(JSON.stringify(values))
+
             // formik.resetForm()
         },
     })
     return (
         <form onSubmit={formik.handleSubmit}>
             <div className={styles.form_wrapper}>
-
                 <div className={styles.form_city}>
                     <span>Ваш город</span>
                 </div>
@@ -78,7 +82,7 @@ export const Form = memo(() => {
                 </div>
                 <div className={styles.form_password}>
                     <input
-                        className={formik.errors.email ? styles.form_input_error : ''}
+                        className={formik.errors.password && styles.form_input_error}
                         name="password"
                         type="text"
                         onChange={formik.handleChange}
@@ -94,7 +98,8 @@ export const Form = memo(() => {
                 </div>
                 <div className={styles.form_retryPassword}>
                     <input
-                        className={formik.errors.email ? styles.form_input_error : ''}
+                        required
+                        className={formik.errors.retryPassword && styles.form_input_error}
                         name="retryPassword"
                         type="text"
                         onChange={formik.handleChange}
@@ -111,7 +116,7 @@ export const Form = memo(() => {
                 </div>
                 <div className={styles.form_email}>
                     <input
-                        className={formik.errors.email ? styles.form_input_error : ''}
+                        className={formik.errors.email && styles.form_input_error}
                         name="email"
                         type="text"
                         onChange={formik.handleChange}
@@ -126,11 +131,12 @@ export const Form = memo(() => {
                     <span>Я согласен</span>
                 </div>
                 <div className={styles.div17}>
-                    <input type="checkbox"/> <p>принимать актуальную информацию на емейл</p>
+                    <input className={styles.form_checkbox} name={'checkbox'} onChange={formik.handleChange} checked={formik.values.checkbox} type="checkbox"/>
+                    <label>принимать актуальную информацию на емейл</label>
                 </div>
-                <div className={styles.div18}>
+                <div className={styles.from_btnSubmit}>
                     <Button type={'submit'} value={'Изменить'}/>
-                    <p>последние изменения 15 мая 2012 в 14:55:17</p>
+                    <p>последние изменения {lastUpdateForm}</p>
                 </div>
             </div>
         </form>
