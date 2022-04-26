@@ -1,12 +1,14 @@
-import React, {ChangeEvent, memo, useState} from "react";
+import React, {ChangeEvent, FC, KeyboardEvent, memo, useState} from "react";
 import styles from './EditableStatus.module.scss'
 import {changeStatus} from "../../../../store/reducer/formReducer";
 import {useAppDispatch, useAppSelector} from "../../../../utils/customHook";
 
-export const EditableStatus = memo(() => {
-    const userStatus = useAppSelector<string>(state => state.app.status)
+type EditableStatus = {
+    status: string
+}
+export const EditableStatus: FC<EditableStatus> = memo(({status}) => {
     const [editMode, setEditMode] = useState<boolean>(false)
-    const [newStatus, setNewStatus] = useState<string>(userStatus)
+    const [newStatus, setNewStatus] = useState<string>(status)
     const dispatch = useAppDispatch()
 
     const onChangeNewStatus = (e: ChangeEvent<HTMLInputElement>) => {
@@ -22,7 +24,9 @@ export const EditableStatus = memo(() => {
         dispatch(changeStatus(newStatus))
         offEditMode()
     }
-
+    const onKeyPressChangeStatus = (e: KeyboardEvent<HTMLInputElement>) => {
+        e.key === 'Enter' && onChangeStatus()
+    }
     return (
         <div>
             {
@@ -32,6 +36,7 @@ export const EditableStatus = memo(() => {
                             <input autoFocus type="text"
                                    value={newStatus}
                                    onChange={onChangeNewStatus}
+                                   onKeyPress={(e) => onKeyPressChangeStatus(e)}
                             />
                             <button className={styles.status_btn} onClick={onChangeStatus}>Подтвердить</button>
                         </div>
@@ -39,7 +44,7 @@ export const EditableStatus = memo(() => {
                     :
                     <div className={styles.status_block}>
                         <div className={styles.status_message}>
-                            <p>{userStatus}</p>
+                            <p>{status}</p>
                             <button className={styles.status_btn} onClick={onEditMode}>Сменить статус</button>
                         </div>
                     </div>

@@ -6,6 +6,15 @@
   grid-row-gap: 0;
   margin-top: 45px;
 
+  & .errors_message {
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    top: 25px;
+    left: 0;
+  }
+
+
   & .form_city {
     grid-area: 1 / 1 / 2 / 2;
   }
@@ -32,8 +41,9 @@
     grid-area: 4 / 1 / 5 / 2;
   }
 
-  & .div7 {
+  & .form_password {
     grid-area: 4 / 2 / 5 / 3;
+    position: relative;
 
     & input {
       padding-left: 10px;
@@ -42,6 +52,10 @@
       width: 336px;
       height: 32px;
       border: 1px solid #999999;
+    }
+
+    & .form_input_error {
+      border: 1px solid red;
     }
   }
 
@@ -55,8 +69,9 @@
     grid-area: 5 / 1 / 6 / 2;
   }
 
-  & .div10 {
+  & .form_retryPassword {
     grid-area: 5 / 2 / 6 / 3;
+    position: relative;
 
     & input {
       padding-left: 10px;
@@ -66,6 +81,11 @@
       height: 32px;
       border: 1px solid #999999;
     }
+
+    & .form_input_error {
+      border: 1px solid red;
+    }
+
   }
 
   & .div11 {
@@ -84,8 +104,9 @@
     grid-area: 7 / 1 / 8 / 2;
   }
 
-  & .div14 {
+  & .form_email {
     grid-area: 7 / 2 / 8 / 3;
+    position: relative;
 
     & input {
       padding-left: 10px;
@@ -94,6 +115,10 @@
       width: 336px;
       height: 32px;
       border: 1px solid #999999;
+    }
+
+    & .form_input_error {
+      border: 1px solid red;
     }
   }
 
@@ -109,13 +134,18 @@
 
   & .div17 {
     grid-area: 8 / 2 / 9 / 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   & .div18 {
     grid-area: 9 / 2 / 10 / 3;
-    display: inline-block;
+    display: flex;
+    justify-content: space-between;
     font-size: 12px;
     color: #999999;
+
   }
 
   span {

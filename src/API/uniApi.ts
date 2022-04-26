@@ -1,25 +1,26 @@
-import axios, {AxiosResponse} from "axios";
+import axios, {AxiosError, AxiosResponse} from "axios";
 
 
 const axiosInstance = axios.create({
-    withCredentials: true,
-    baseURL: 'http://universities.hipolabs.com/search?country=United+Kingdom/allow-cors',
+    baseURL: 'http://universities.hipolabs.com',
     headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE',
-        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+        'Content-Type': 'application/json',
     }
-
 })
 
 export const uniApi = {
-    getUni() {
-        return axiosInstance.get<AxiosResponse<getUniT[]>>('')
+    getUni: () => {
+        try {
+          return  axiosInstance.get<AxiosResponse<getUniT[]>>('/search?country=United+Kingdom')
+
+        } catch (e) {
+            return console.warn(e as AxiosError)
+        }
+
     }
 }
 
 export type getUniT = {
-    state_province: null
     country: string
     name: string
     web_pages: string[]

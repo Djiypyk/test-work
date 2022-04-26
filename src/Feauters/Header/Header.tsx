@@ -6,12 +6,13 @@ import {useAppSelector} from "../../utils/customHook";
 
 export const Header = () => {
     const userName = useAppSelector<string>(state => state.app.name)
+    const userStatus = useAppSelector<string>(state => state.app.status)
     return (
         <div className={styles.header}>
             <div className={styles.header_hello}>
                 <h2>Здравствуйте, <span>{userName}</span></h2>
             </div>
-            <EditableStatus/>
+            <EditableStatus status={userStatus}/>
         </div>
     )
 }
