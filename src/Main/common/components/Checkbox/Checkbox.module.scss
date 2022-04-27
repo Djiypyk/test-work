@@ -1,0 +1,23 @@
+.checkbox {
+  display: inline-block; // set to `inline-block` as `inline elements ignore `height` and `width`
+  height: 12px;
+  width: 12px;
+  background: #fff;
+  border: 1px #575757 solid;
+  margin-right: 4px;
+  position: relative;
+
+  & input {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    opacity: 0;
+    cursor: pointer;
+
+  }
+
+}
+
+.checkbox__active {
+  background: url("../../../assets/svg/checkbox.svg") no-repeat center;
+}

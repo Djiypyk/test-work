@@ -1,5 +1,3 @@
-import obj from '../Main/common/cities.json'
-
 export type CitiesT = {
     city: string
     population: string

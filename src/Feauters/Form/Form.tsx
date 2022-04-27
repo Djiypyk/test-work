@@ -1,12 +1,13 @@
-import React, {memo, useEffect} from "react";
+import React, {memo} from "react";
 import {Select} from "../../Main/common/components/Select/Select";
 import styles from './Form.module.scss'
-import {getUnisS} from "../../store/saga/formSaga";
 import {useAppDispatch, useAppSelector} from "../../utils/customHook";
 import {useFormik} from "formik";
 import {Button} from "../../Main/common/components/Button/Button";
 import {setLastUpdateDate} from "../../store/reducer/formReducer";
 import {actualDate} from "../../utils/Date";
+import {UserT} from "../../types/formReducer";
+import {Checkbox} from "../../Main/common/components/Checkbox/Checkbox";
 
 export type FormParamsT = {
     status: string
@@ -20,13 +21,11 @@ export type FormParamsT = {
 }
 export const Form = memo(() => {
     const status = useAppSelector<string>(state => state.app.status)
-    const cities = useAppSelector<string[]>(state => state.app.cities.map(c=> c.city))
+    const cities = useAppSelector<string[]>(state => state.app.cities.map(c => c.city))
     const arrUni = useAppSelector<string[]>(state => state.app.arrayUniName)
     const lastUpdateForm = useAppSelector<string>(state => state.app.lastUpdateForm)
+    const userInfo = useAppSelector<UserT>(state => state.app.user)
     const dispatch = useAppDispatch()
-    useEffect(() => {
-        dispatch(getUnisS())
-    }, [])
     const formik = useFormik({
         validate: (values) => {
             const errors: Partial<FormParamsT> = {};
@@ -47,18 +46,16 @@ export const Form = memo(() => {
         },
         initialValues: {
             status: status,
-            email: '',
-            password: '',
+            email: userInfo.email,
+            password: userInfo.password,
             retryPassword: '',
             uni: arrUni[0],
             cities: cities[0],
-            checkbox: false
+            checkbox: userInfo.agree
         },
         onSubmit: (values: FormParamsT) => {
             dispatch(setLastUpdateDate(actualDate()))
             console.log(JSON.stringify(values))
-
-            // formik.resetForm()
         },
     })
     return (
@@ -131,7 +128,8 @@ export const Form = memo(() => {
                     <span>Я согласен</span>
                 </div>
                 <div className={styles.div17}>
-                    <input className={styles.form_checkbox} name={'checkbox'} onChange={formik.handleChange} checked={formik.values.checkbox} type="checkbox"/>
+                    <Checkbox checked={formik.values.checkbox} type={'checkbox'} onChange={formik.handleChange}
+                              name={'checkbox'}/>
                     <label>принимать актуальную информацию на емейл</label>
                 </div>
                 <div className={styles.from_btnSubmit}>

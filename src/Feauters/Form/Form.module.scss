@@ -136,9 +136,11 @@
     grid-area: 8 / 2 / 9 / 3;
     display: flex;
     align-items: center;
-    & .form_checkbox{
-      outline: none;
-    }
+    margin-bottom: 50px;
+    //& input {
+    //  cursor: pointer;
+    //  opacity: 0.5;
+    //}
     & label {
       margin-left: 20px;
     }
