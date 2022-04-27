@@ -1,4 +1,5 @@
 import axios, {AxiosError, AxiosResponse} from "axios";
+import {getUniT} from "../types/UniT";
 
 
 const axiosInstance = axios.create({
@@ -9,21 +10,11 @@ const axiosInstance = axios.create({
 })
 
 export const uniApi = {
-    getUni: () => {
+    getUni: async () => {
         try {
-          return  axiosInstance.get<AxiosResponse<getUniT[]>>('/search?country=United+Kingdom')
-
+            return await axiosInstance.get<AxiosResponse<getUniT[]>>('/search?country=United+Kingdom')
         } catch (e) {
             return console.warn(e as AxiosError)
         }
-
     }
-}
-
-export type getUniT = {
-    country: string
-    name: string
-    web_pages: string[]
-    domains: string[]
-    alpha_two_code: string
 }

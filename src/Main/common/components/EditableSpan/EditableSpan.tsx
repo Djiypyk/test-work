@@ -1,15 +1,14 @@
 import React, {ChangeEvent, FC, KeyboardEvent, memo, useState} from "react";
-import styles from './EditableStatus.module.scss'
-import {changeStatus} from "../../../../store/reducer/formReducer";
-import {useAppDispatch, useAppSelector} from "../../../../utils/customHook";
+import styles from './EditableSpan.module.scss'
 
-type EditableStatus = {
+type EditableSpan = {
     status: string
+    onChangeStatus: (text: string) => void
 }
-export const EditableStatus: FC<EditableStatus> = memo(({status}) => {
+export const EditableSpan: FC<EditableSpan> = memo(({status, onChangeStatus}) => {
     const [editMode, setEditMode] = useState<boolean>(false)
     const [newStatus, setNewStatus] = useState<string>(status)
-    const dispatch = useAppDispatch()
+
 
     const onChangeNewStatus = (e: ChangeEvent<HTMLInputElement>) => {
         setNewStatus(e.currentTarget.value)
@@ -20,38 +19,37 @@ export const EditableStatus: FC<EditableStatus> = memo(({status}) => {
     const offEditMode = (): void => {
         setEditMode(false)
     }
-    const onChangeStatus = (): void => {
-        dispatch(changeStatus(newStatus))
+    const onChange = (): void => {
+        onChangeStatus(newStatus)
         offEditMode()
     }
     const onKeyPressChangeStatus = (e: KeyboardEvent<HTMLInputElement>) => {
-        e.key === 'Enter' && onChangeStatus()
+        e.key === 'Enter' && onChange()
     }
     return (
         <div>
             {
                 editMode ?
                     <div className={styles.status_block}>
+                        <button className={styles.status_btn} onClick={onChange}>Подтвердить</button>
                         <div className={styles.status_message}>
                             <input autoFocus type="text"
                                    value={newStatus}
                                    onChange={onChangeNewStatus}
                                    onKeyPress={(e) => onKeyPressChangeStatus(e)}
                             />
-                            <button className={styles.status_btn} onClick={onChangeStatus}>Подтвердить</button>
+
                         </div>
                     </div>
                     :
                     <div className={styles.status_block}>
+                        <button className={styles.status_btn} onClick={onEditMode}>Сменить статус</button>
                         <div className={styles.status_message}>
                             <p>{status}</p>
-                            <button className={styles.status_btn} onClick={onEditMode}>Сменить статус</button>
+
                         </div>
                     </div>
-
             }
-
-
         </div>
     )
 })

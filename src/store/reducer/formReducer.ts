@@ -1,7 +1,7 @@
 import {CitiesT, sortCities} from "../../utils/cities";
 import obj from '../../Main/common/cities.json'
-import {getUniT} from "../../API/uniApi";
-import {ActionsFormReducerT, UserT} from "../../types/formReducer";
+import {ActionsFormReducerT, UserT} from "../../types/formReducerT";
+import {getUniT} from "../../types/UniT";
 
 const cities = sortCities(obj)
 const initialState = {
@@ -21,10 +21,9 @@ const initialState = {
 export const formReducer = (state: InitialStateFormReducerT = initialState, action: ActionsFormReducerT,): InitialStateFormReducerT => {
     switch (action.type) {
         case "CHANGE-STATUS":
-            debugger
             return {...state, status: action.status}
         case 'GET_UNI':
-            return {...state, unis: action.data, arrayUniName: action.data.map(u => u.name)}
+            return {...state, unis: action.data, arrayUniName: action.data.map(u => u.name).sort()}
         case "SET_LAST_UPDATE_DATE":
             return {...state, lastUpdateForm: action.date}
         default:

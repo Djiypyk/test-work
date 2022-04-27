@@ -1,19 +1,22 @@
+@mixin description {
+  font-size: 12px ;
+  color: #999999;
+}
+
+
 .form_wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr) 0.5fr repeat(2, 1fr) 0.5fr repeat(3, 1fr);
-  grid-column-gap: 0;
-  grid-row-gap: 0;
+  grid-template-rows: repeat(2, 0.8fr) 0.5fr repeat(2, 0.8fr) 0.5fr repeat(3, 0.8fr);
   margin-top: 45px;
 
-  & .errors_message {
+  & .form_errors_message {
     color: red;
     font-size: 12px;
     position: absolute;
     top: 25px;
     left: 0;
   }
-
 
   & .form_city {
     grid-area: 1 / 1 / 2 / 2;
@@ -31,41 +34,27 @@
     grid-area: 2 / 2 / 3 / 3;
   }
 
-  & .div5 {
+  & .form_hr {
     grid-area: 3 / 1 / 4 / 6;
     border-bottom: 1px solid #E5E4E4;
     margin-bottom: 40px;
   }
 
-  & .div6 {
+  & .form_password_text {
     grid-area: 4 / 1 / 5 / 2;
   }
 
   & .form_password {
     grid-area: 4 / 2 / 5 / 3;
     position: relative;
-
-    & input {
-      padding-left: 10px;
-      font-size: 16px;
-      outline: #666666;
-      width: 336px;
-      height: 32px;
-      border: 1px solid #999999;
-    }
-
-    & .form_input_error {
-      border: 1px solid red;
-    }
   }
 
-  & .div8 {
+  & .form_password_description {
     grid-area: 4 / 3 / 5 / 4;
-    font-size: 12px;
-    color: #999999;
+    @include description
   }
 
-  & .div9 {
+  & .form_retryPassword_text {
     grid-area: 5 / 1 / 6 / 2;
   }
 
@@ -73,75 +62,46 @@
     grid-area: 5 / 2 / 6 / 3;
     position: relative;
 
-    & input {
-      padding-left: 10px;
-      font-size: 16px;
-      outline: #666666;
-      width: 336px;
-      height: 32px;
-      border: 1px solid #999999;
-    }
-
-    & .form_input_error {
-      border: 1px solid red;
-    }
-
   }
 
-  & .div11 {
+  & .form_retryPassword_description {
     grid-area: 5 / 3 / 6 / 4;
-    font-size: 12px;
-    color: #999999;
+    @include description
   }
 
-  & .div12 {
+  & .hr2 {
     grid-area: 6 / 1 / 7 / 4;
     border-bottom: 1px solid #E5E4E4;
     margin-bottom: 40px;
   }
 
-  & .div13 {
+  & .form_email_text {
     grid-area: 7 / 1 / 8 / 2;
   }
 
-  & .form_email {
+  & .form_email_input {
     grid-area: 7 / 2 / 8 / 3;
     position: relative;
-
-    & input {
-      padding-left: 10px;
-      font-size: 16px;
-      outline: #666666;
-      width: 336px;
-      height: 32px;
-      border: 1px solid #999999;
-    }
-
-    & .form_input_error {
-      border: 1px solid red;
-    }
   }
 
-  & .div15 {
+  & .form_change_email_description {
     grid-area: 7 / 3 / 8 / 4;
-    font-size: 12px;
-    color: #999999;
+    @include description
   }
 
-  & .div16 {
+  & .form_agree {
     grid-area: 8 / 1 / 9 / 2;
   }
 
-  & .div17 {
+  & .form_agree_checkbox {
     grid-area: 8 / 2 / 9 / 3;
     display: flex;
     align-items: center;
-    margin-bottom: 50px;
-    //& input {
-    //  cursor: pointer;
-    //  opacity: 0.5;
-    //}
-    & label {
+    margin-bottom: 30px;
+   & .form_agree_checkbox_block{
+      align-items: center;
+    }
+    & p {
       margin-left: 20px;
     }
   }
@@ -151,10 +111,10 @@
     display: flex;
     font-size: 12px;
     color: #999999;
+
     & p {
       margin-left: 20px;
     }
-
   }
 
   span {

@@ -1,7 +1,7 @@
 .status_block {
   display: flex;
-  //justify-content: center;
   margin-top: -15px;
+  position: relative;
 
   & .status_message {
     width: 500px;
@@ -43,12 +43,12 @@
     border-bottom: 1px dashed #0C77BB;
     background-color: white;
     color: #0C77BB;
-    margin-top: 30px;
+    //margin-top: 30px;
     cursor: pointer;
     position: absolute;
     background-color: rgba(0, 0, 0, 0);
-    top: -60px;
-    right: 0;
+    top: -30px;
+    left: 52%;
   }
 }
 
