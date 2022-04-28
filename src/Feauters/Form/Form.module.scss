@@ -1,163 +1,147 @@
-@mixin description {
+form {
+  width: 100%;
+}
+
+.flexWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 45px auto 0;
+  @media(max-width: 1600px) {
+    width: 70%;
+  }
+  @media(max-width: 1140px) {
+    width: 90%;
+  }
+}
+
+.form_errors_message {
+  height: 5px;
+  color: red;
   font-size: 12px;
-  color: #999999;
-  margin-left: 18px;
 }
 
-.form_wrapper {
-  margin-top: 45px;
+.flexRow {
+  display: flex;
+  width: 100%;
+  min-width: 100%;
+  align-items: center;
+  padding: 10px 0;
 
-  span {
+  .left {
+    flex: 0 0 33.33%;
+    width: 100%;
+    padding-left: 5px;
     font-size: 21px;
+
   }
 
-  & .form_city_container {
+  .center {
+    flex: 0 0 33.33%;
+    padding: 0 10px;
     display: flex;
+    justify-content: center;
 
-    span {
-      margin-right: 106px;
-    }
-
-    @media (max-width: 762px) {
-      flex-direction: column;
-      & span {
-        margin-bottom: 10px;
-      }
-    }
-  }
-
-  & .form_uni_container {
-    display: flex;
-
-    span {
-      margin-right: 40px;
-    }
-
-    @media (max-width: 762px) {
-      flex-direction: column;
-      & span {
-        margin-bottom: 10px;
-      }
-    }
-  }
-
-  & .form_hr {
-    border: none;
-    background-color: #E5E4E4;
-    height: 1px;
-    margin-bottom: 40px;
-  }
-
-  & .form_password_container {
-    display: flex;
-    margin-bottom: 20px;
-
-    & span {
-      margin-right: 136px;
-    }
-
-    @media (max-width: 762px) {
-      flex-direction: column;
-      & span {
-        margin-bottom: 10px;
-      }
-    }
-  }
-
-  & .form_retryPassword_container {
-    display: flex;
-    margin-bottom: 20px;
-
-    & span {
-      margin-right: 50px;
-    }
-
-    @media (max-width: 762px) {
-      flex-direction: column;
-      & span {
-        margin-bottom: 10px;
-      }
-    }
-  }
-
-  & .form_email_container {
-    display: flex;
-    margin-bottom: 20px;
-
-    & span {
-      margin-right: 22px;
-    }
-
-    @media (max-width: 762px) {
-      flex-direction: column;
-      & span {
-        margin-bottom: 10px;
-      }
-    }
-  }
-
-  & .form_agree_container {
-    display: flex;
-    margin-bottom: 20px;
-
-    & .form_subscribe_checkbox {
-      padding-top: 5px;
-    }
-
-    & span {
-      margin-right: 100px;
-    }
-
-    & .form_agree {
+    & input {
       font-size: 16px;
-      margin-left: 10px;
+      outline: #666666;
+      width: 340px;
+      height: 32px;
+      border: 1px solid #999999;
+      display: inline-block;
     }
 
-    @media (max-width: 762px) {
-      flex-direction: column;
-      & span {
-        margin-bottom: 10px;
+    &__check {
+      width: 340px;
+
+      label {
+        font-size: 14px;
+        padding-left: 10px;
       }
     }
   }
 
-  & .form_btn {
-    display: flex;
-    margin: 40px auto 0 auto;
+  .right {
+    flex: 0 0 33.33%;
+    font-size: 12px;
+    color: #999999;
+    padding: 0 10px 0 5px;
+  }
 
-    @media (max-width: 768px) {
-      & span {
-        margin-bottom: 10px;
 
-      }
+  @media(max-width: 1140px) {
+    .left {
+      flex: 0 0 25%;
+    }
+    .center {
+      flex: 0 0 50%;
+    }
+    .right {
+      flex: 0 0 25%;
     }
   }
-
-  & .form_errors_message {
-    height: 5px;
-    color: red;
-    font-size: 12px;
-  }
-
-  .form_description {
-    @include description;
-  }
-
-
-  .form_lastChange_date {
-    @include description;
-    margin-left: 12px;
-  }
-
-  & .form_errors_message {
-    height: 5px;
-    color: red;
-    font-size: 12px;
-  }
-
-  & .form_description {
-    @include description;
+  @media(max-width: 768px) {
+    padding: 10px 0;
+    flex-direction: column;
+    .left {
+      width: 340px;
+      padding: 0 0 10px;
+      flex: 0 0 100%;
+    }
+    .center {
+      flex: 0 0 100%;
+      width: 340px;
+      padding: 0;
+    }
+    .right {
+      flex: 0 0 100%;
+      width: 340px;
+    }
   }
 }
 
+.btnAgree {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 
+  &__submit {
+    flex: 0 0 33.33%;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: #999999;
+    padding: 0 10px;
+
+    p {
+      padding-left: 5px;
+    }
+  }
+
+  @media(max-width: 1140px) {
+    &__submit {
+      flex: 0 0 50%;
+      max-width: 340px;
+      padding: 0;
+    }
+  }
+  @media(max-width: 768px) {
+    &__submit {
+      justify-content: center;
+      flex: 0 0 100%;
+      width: 340px;
+      max-width: 340px;
+    }
+  }
+}
+
+hr {
+  border: none;
+  color: #E5E4E4;
+  background-color: #E5E4E4;
+  height: 0.5px;
+  margin: 20px 0;
+  @media(max-width: 768px) {
+    margin: 10px 0;
+  }
+}
