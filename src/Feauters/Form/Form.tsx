@@ -36,79 +36,79 @@ export const Form = memo(() => {
     return (
         <form onSubmit={formik.handleSubmit}>
             <div className={styles.form_wrapper}>
-                <div className={styles.form_city}>
+
+                <div className={styles.form_city_container}>
                     <span>Ваш город</span>
-                </div>
-                <div className={styles.form_uni}>
-                    <span>Ваш университет</span>
-                </div>
-                <div className={styles.form_city_select}>
                     <Select options={cities} name="cities" onChange={formik.handleChange}/>
                 </div>
-                <div className={styles.form_uni_select}>
+                <div className={styles.form_uni_container}>
+                    <span>Ваш университет</span>
                     <Select options={arrUni} name="uni" onChange={formik.handleChange}/>
                 </div>
-                <div className={styles.form_hr}/>
-                <div className={styles.form_password_text}>
+                <hr className={styles.form_hr}/>
+
+                <div className={styles.form_password_container}>
                     <span>Пароль</span>
+                    <div className={styles.form_input}>
+                        <Input error={formik.errors.password}
+                               name="password"
+                               type="password"
+                               onChange={formik.handleChange}
+                               onBlur={formik.handleBlur}
+                               value={formik.values.password}
+                               required={true}/>
+
+                        <p className={styles.form_errors_message}>{formik.touched.password && formik.errors.password}</p>
+
+                    </div>
+                    <p className={styles.form_description}>Ваш новый пароль должен содержать не менее 5
+                        символов.</p>
+
+
                 </div>
-                <div className={styles.form_password}>
-                    <Input error={formik.errors.password}
-                           name="password"
-                           type="password"
-                           onChange={formik.handleChange}
-                           onBlur={formik.handleBlur}
-                           value={formik.values.password}
-                           required={true}/>
-                    <p className={styles.form_errors_message}>{formik.touched.password && formik.errors.password}</p>
-                </div>
-                <div className={styles.form_password_description}>
-                    <p>Ваш новый пароль должен содержать не менее 5 символов.</p>
-                </div>
-                <div className={styles.form_retryPassword_text}>
+                <div className={styles.form_retryPassword_container}>
                     <span>Пароль ещё раз</span>
+                    <div className={styles.form_input}>
+                        <Input error={formik.errors.retryPassword}
+                               name="retryPassword"
+                               type="password"
+                               onChange={formik.handleChange}
+                               onBlur={formik.handleBlur}
+                               value={formik.values.retryPassword}
+                               required={true}/>
+                        <p className={styles.form_errors_message}>{formik.touched.retryPassword && formik.errors.retryPassword}</p>
+                    </div>
+                    <p className={styles.form_description}>Повторите пароль, пожалуйста, это обезопасит вас с нами
+                        на случай ошибки.</p>
+
                 </div>
-                <div className={styles.form_retryPassword}>
-                    <Input error={formik.errors.retryPassword}
-                           name="retryPassword"
-                           type="password"
-                           onChange={formik.handleChange}
-                           onBlur={formik.handleBlur}
-                           value={formik.values.retryPassword}
-                           required={true}/>
-                    <p className={styles.form_errors_message}> {formik.touched.retryPassword && formik.errors.retryPassword} </p>
-                </div>
-                <div className={styles.form_retryPassword_description}>
-                    <p>Повторите пароль, пожалуйста, это обезопасит вас с нами на случай ошибки.</p>
-                </div>
-                <div className={styles.hr2}/>
-                <div className={styles.form_email_text}>
+                <hr className={styles.form_hr}/>
+                <div className={styles.form_email_container}>
                     <span>Электронаня почта</span>
+                    <div className={styles.form_input}>
+                        <Input error={formik.errors.email}
+                               name="email"
+                               type="text"
+                               onChange={formik.handleChange}
+                               onBlur={formik.handleBlur}
+                               value={formik.values.email}
+                               required={true}/>
+                        <p className={styles.form_errors_message}>{formik.touched.email && formik.errors.email}</p>
+                    </div>
+                    <p className={styles.form_description}>Можно изменить адрес, указанный при регистрации.</p>
                 </div>
-                <div className={styles.form_email_input}>
-                    <Input error={formik.errors.email}
-                           name="email"
-                           type="text"
-                           onChange={formik.handleChange}
-                           onBlur={formik.handleBlur}
-                           value={formik.values.email}
-                           required={true}/>
-                    <p className={styles.form_errors_message}>{formik.touched.email && formik.errors.email}</p>
-                </div>
-                <div className={styles.form_change_email_description}>
-                    <p>Можно изменить адрес, указанный при регистрации. </p>
-                </div>
-                <div className={styles.form_agree}>
+
+                <div className={styles.form_agree_container}>
                     <span>Я согласен</span>
+                    <div className={styles.form_subscribe_checkbox}>
+                        <Checkbox checked={formik.values.checkbox} type={'checkbox'} onChange={formik.handleChange}
+                                  name={'checkbox'}/>
+                        <span className={styles.form_agree}>принимать актуальную информацию на емейл</span>
+                    </div>
                 </div>
-                <div className={styles.form_agree_checkbox}>
-                    <Checkbox checked={formik.values.checkbox} type={'checkbox'} onChange={formik.handleChange}
-                              name={'checkbox'}/>
-                    <p>принимать актуальную информацию на емейл</p>
-                </div>
-                <div className={styles.from_btnSubmit}>
+                <div className={styles.form_btn}>
                     <Button type={'submit'} value={'Изменить'}/>
-                    <p>последние изменения {lastUpdateForm}</p>
+                    <p className={styles.form_lastChange_date}>последние изменения {lastUpdateForm}</p>
                 </div>
             </div>
         </form>

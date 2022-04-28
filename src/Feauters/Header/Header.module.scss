@@ -1,6 +1,12 @@
 .header {
-  margin-top: 90px;
-
+  margin: 90px auto 0;
+  width: 50%;
+  @media(max-width: 1600px) {
+    width: 70%;
+  }
+  @media(max-width: 1140px) {
+    width: 90%;
+  }
   & .header_hello {
     & h2 {
       color: #666666;
@@ -12,5 +18,4 @@
       }
     }
   }
-
 }

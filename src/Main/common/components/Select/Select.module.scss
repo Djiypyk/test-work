@@ -1,9 +1,10 @@
 .select {
-  width: 336px;
+  width: 340px;
+  max-width: 340px;
   height: 31px;
   font-size: 16px;
   padding: 5px;
-  margin-bottom: 40px;
+  margin: 0;
   appearance: none;
   cursor: pointer;
   background: url('../../../assets/svg/arrow.svg') no-repeat right 2% top 50%;

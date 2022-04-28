@@ -1,123 +1,163 @@
 @mixin description {
-  font-size: 12px ;
+  font-size: 12px;
   color: #999999;
+  margin-left: 18px;
 }
 
-
 .form_wrapper {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 0.8fr) 0.5fr repeat(2, 0.8fr) 0.5fr repeat(3, 0.8fr);
   margin-top: 45px;
-
-  & .form_errors_message {
-    color: red;
-    font-size: 12px;
-    position: absolute;
-    top: 25px;
-    left: 0;
-  }
-
-  & .form_city {
-    grid-area: 1 / 1 / 2 / 2;
-  }
-
-  & .form_uni {
-    grid-area: 2 / 1 / 3 / 2;
-  }
-
-  & .form_city_select {
-    grid-area: 1 / 2 / 2 / 3;
-  }
-
-  & .form_uni_select {
-    grid-area: 2 / 2 / 3 / 3;
-  }
-
-  & .form_hr {
-    grid-area: 3 / 1 / 4 / 6;
-    border-bottom: 1px solid #E5E4E4;
-    margin-bottom: 40px;
-  }
-
-  & .form_password_text {
-    grid-area: 4 / 1 / 5 / 2;
-  }
-
-  & .form_password {
-    grid-area: 4 / 2 / 5 / 3;
-    position: relative;
-  }
-
-  & .form_password_description {
-    grid-area: 4 / 3 / 5 / 4;
-    @include description
-  }
-
-  & .form_retryPassword_text {
-    grid-area: 5 / 1 / 6 / 2;
-  }
-
-  & .form_retryPassword {
-    grid-area: 5 / 2 / 6 / 3;
-    position: relative;
-
-  }
-
-  & .form_retryPassword_description {
-    grid-area: 5 / 3 / 6 / 4;
-    @include description
-  }
-
-  & .hr2 {
-    grid-area: 6 / 1 / 7 / 4;
-    border-bottom: 1px solid #E5E4E4;
-    margin-bottom: 40px;
-  }
-
-  & .form_email_text {
-    grid-area: 7 / 1 / 8 / 2;
-  }
-
-  & .form_email_input {
-    grid-area: 7 / 2 / 8 / 3;
-    position: relative;
-  }
-
-  & .form_change_email_description {
-    grid-area: 7 / 3 / 8 / 4;
-    @include description
-  }
-
-  & .form_agree {
-    grid-area: 8 / 1 / 9 / 2;
-  }
-
-  & .form_agree_checkbox {
-    grid-area: 8 / 2 / 9 / 3;
-    display: flex;
-    align-items: center;
-    margin-bottom: 30px;
-   & .form_agree_checkbox_block{
-      align-items: center;
-    }
-    & p {
-      margin-left: 20px;
-    }
-  }
-
-  & .from_btnSubmit {
-    grid-area: 9 / 2 / 10 / 4;
-    display: flex;
-    font-size: 12px;
-    color: #999999;
-
-    & p {
-      margin-left: 20px;
-    }
-  }
 
   span {
     font-size: 21px;
   }
+
+  & .form_city_container {
+    display: flex;
+
+    span {
+      margin-right: 106px;
+    }
+
+    @media (max-width: 762px) {
+      flex-direction: column;
+      & span {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  & .form_uni_container {
+    display: flex;
+
+    span {
+      margin-right: 40px;
+    }
+
+    @media (max-width: 762px) {
+      flex-direction: column;
+      & span {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  & .form_hr {
+    border: none;
+    background-color: #E5E4E4;
+    height: 1px;
+    margin-bottom: 40px;
+  }
+
+  & .form_password_container {
+    display: flex;
+    margin-bottom: 20px;
+
+    & span {
+      margin-right: 136px;
+    }
+
+    @media (max-width: 762px) {
+      flex-direction: column;
+      & span {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  & .form_retryPassword_container {
+    display: flex;
+    margin-bottom: 20px;
+
+    & span {
+      margin-right: 50px;
+    }
+
+    @media (max-width: 762px) {
+      flex-direction: column;
+      & span {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  & .form_email_container {
+    display: flex;
+    margin-bottom: 20px;
+
+    & span {
+      margin-right: 22px;
+    }
+
+    @media (max-width: 762px) {
+      flex-direction: column;
+      & span {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  & .form_agree_container {
+    display: flex;
+    margin-bottom: 20px;
+
+    & .form_subscribe_checkbox {
+      padding-top: 5px;
+    }
+
+    & span {
+      margin-right: 100px;
+    }
+
+    & .form_agree {
+      font-size: 16px;
+      margin-left: 10px;
+    }
+
+    @media (max-width: 762px) {
+      flex-direction: column;
+      & span {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  & .form_btn {
+    display: flex;
+    margin: 40px auto 0 auto;
+
+    @media (max-width: 768px) {
+      & span {
+        margin-bottom: 10px;
+
+      }
+    }
+  }
+
+  & .form_errors_message {
+    height: 5px;
+    color: red;
+    font-size: 12px;
+  }
+
+  .form_description {
+    @include description;
+  }
+
+
+  .form_lastChange_date {
+    @include description;
+    margin-left: 12px;
+  }
+
+  & .form_errors_message {
+    height: 5px;
+    color: red;
+    font-size: 12px;
+  }
+
+  & .form_description {
+    @include description;
+  }
 }
+
+
