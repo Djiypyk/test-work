@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, {FC, memo} from "react";
 import styles from './Checkbox.module.scss'
 
 type CheckboxT = {
@@ -7,7 +7,7 @@ type CheckboxT = {
     onChange: (e: any) => void
     type: string
 }
-export const Checkbox: FC<CheckboxT> = ({name, checked, onChange, type}) => {
+export const Checkbox: FC<CheckboxT> = memo(({name, checked, onChange, type}) => {
 
     return (
         <div className={`${styles.checkbox} ${checked ? styles.checkbox__active : ''}`}>
@@ -15,4 +15,4 @@ export const Checkbox: FC<CheckboxT> = ({name, checked, onChange, type}) => {
                    type="checkbox"/>
         </div>
     )
-}
+})

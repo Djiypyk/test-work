@@ -1,14 +1,14 @@
-import React, {SelectHTMLAttributes, DetailedHTMLProps, ChangeEvent, memo} from 'react'
+import React, {ChangeEvent, DetailedHTMLProps, FC, memo, SelectHTMLAttributes} from 'react'
 import styles from './Select.module.scss'
 
 type DefaultSelectPropsType = DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>
 
-type SuperSelectPropsType = DefaultSelectPropsType & {
+type SuperSelectPropsT = DefaultSelectPropsType & {
     options?: any[]
     onChangeOption?: (option: any) => void
 }
 
-export const Select: React.FC<SuperSelectPropsType> = memo((
+export const Select: FC<SuperSelectPropsT> = memo((
     {
         options,
         onChange, onChangeOption,

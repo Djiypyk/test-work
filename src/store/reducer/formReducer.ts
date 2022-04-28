@@ -37,4 +37,4 @@ export const getUni = (data: getUniT[]) => ({type: 'GET_UNI', data} as const)
 export const setLastUpdateDate = (date: string) => ({type: 'SET_LAST_UPDATE_DATE', date} as const)
 
 // Types
-type InitialStateFormReducerT = typeof initialState
+export type InitialStateFormReducerT = typeof initialState

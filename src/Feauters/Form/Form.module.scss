@@ -2,7 +2,7 @@ form {
   width: 100%;
 }
 
-.flexWrapper {
+.form_flexWrapper {
   display: flex;
   flex-direction: column;
   width: 50%;
@@ -15,11 +15,6 @@ form {
   }
 }
 
-.form_errors_message {
-  height: 5px;
-  color: red;
-  font-size: 12px;
-}
 
 .flexRow {
   display: flex;
@@ -28,7 +23,7 @@ form {
   align-items: center;
   padding: 10px 0;
 
-  .left {
+  .form_title {
     flex: 0 0 33.33%;
     width: 100%;
     padding-left: 5px;
@@ -36,11 +31,12 @@ form {
 
   }
 
-  .center {
+  .form_value {
     flex: 0 0 33.33%;
     padding: 0 10px;
     display: flex;
     justify-content: center;
+    position: relative;
 
     & input {
       font-size: 16px;
@@ -50,6 +46,16 @@ form {
       border: 1px solid #999999;
       display: inline-block;
     }
+
+    & .form_errors_message {
+      position: absolute;
+      top: 26px;
+      left: 10px;
+      height: 5px;
+      color: red;
+      font-size: 12px;
+    }
+
 
     &__check {
       width: 340px;
@@ -61,7 +67,7 @@ form {
     }
   }
 
-  .right {
+  .form_description {
     flex: 0 0 33.33%;
     font-size: 12px;
     color: #999999;
@@ -70,37 +76,38 @@ form {
 
 
   @media(max-width: 1140px) {
-    .left {
+    .form_title {
       flex: 0 0 25%;
     }
-    .center {
+    .form_value {
       flex: 0 0 50%;
     }
-    .right {
+    .form_description {
       flex: 0 0 25%;
     }
   }
   @media(max-width: 768px) {
     padding: 10px 0;
     flex-direction: column;
-    .left {
+    .form_title {
       width: 340px;
       padding: 0 0 10px;
       flex: 0 0 100%;
     }
-    .center {
+    .form_value {
       flex: 0 0 100%;
       width: 340px;
       padding: 0;
+      margin-bottom: 15px;
     }
-    .right {
+    .form_description {
       flex: 0 0 100%;
       width: 340px;
     }
   }
 }
 
-.btnAgree {
+.form_btnAgree {
   width: 100%;
   display: flex;
   justify-content: center;

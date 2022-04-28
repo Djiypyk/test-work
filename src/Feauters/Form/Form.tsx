@@ -5,7 +5,7 @@ import {useAppDispatch, useAppSelector} from "../../utils/customHook";
 import {useFormik} from "formik";
 import {Button} from "../../Main/common/components/Button/Button";
 import {setLastUpdateDate} from "../../store/reducer/formReducer";
-import {actualDate} from "../../utils/Date";
+import {actualDate} from "../../utils/actualDate";
 import {UserT} from "../../types/formReducerT";
 import {Checkbox} from "../../Main/common/components/Checkbox/Checkbox";
 import {ValidationForm} from "../../utils/ValidationForm";
@@ -35,24 +35,24 @@ export const Form = memo(() => {
     })
     return (
         <form onSubmit={formik.handleSubmit}>
-            <div className={styles.flexWrapper}>
-                <div className={styles.leftBlock}>
+            <div className={styles.form_flexWrapper}>
+                <div>
                     <div className={styles.flexRow}>
-                        <span className={styles.left}>Ваш город</span>
-                        <div className={styles.center}>
+                        <span className={styles.form_title}>Ваш город</span>
+                        <div className={styles.form_value}>
                             <Select options={cities} name="cities" onChange={formik.handleChange}/>
                         </div>
                     </div>
                     <div className={styles.flexRow}>
-                        <span className={styles.left}>Ваш университет</span>
-                        <div className={styles.center}>
+                        <span className={styles.form_title}>Ваш университет</span>
+                        <div className={styles.form_value}>
                             <Select options={arrUni} name="uni" onChange={formik.handleChange}/>
                         </div>
                     </div>
                     <hr/>
                     <div className={styles.flexRow}>
-                        <span className={styles.left}>Пароль</span>
-                        <div className={styles.center}>
+                        <span className={styles.form_title}>Пароль</span>
+                        <div className={styles.form_value}>
                             <Input error={formik.errors.password}
                                    name="password"
                                    type="password"
@@ -60,15 +60,14 @@ export const Form = memo(() => {
                                    onBlur={formik.handleBlur}
                                    value={formik.values.password}
                                    required={true}/>
-                            <p className={styles.errors_message}>
-                                <p className={styles.form_errors_message}>{formik.touched.password && formik.errors.password}</p>
-                            </p>
+                            <p className={styles.form_errors_message}>{formik.touched.password && formik.errors.password}</p>
                         </div>
-                        <p className={styles.right}>Ваш новый пароль должен содержать не менее 5 символов.</p>
+                        <p className={styles.form_description}>Ваш новый пароль должен содержать не менее 5
+                            символов.</p>
                     </div>
                     <div className={styles.flexRow}>
-                        <span className={styles.left}>Пароль ещё раз</span>
-                        <div className={styles.center}>
+                        <span className={styles.form_title}>Пароль ещё раз</span>
+                        <div className={styles.form_value}>
                             <Input error={formik.errors.retryPassword}
                                    name="retryPassword"
                                    type="password"
@@ -80,13 +79,14 @@ export const Form = memo(() => {
                                 {formik.touched.retryPassword && formik.errors.retryPassword}
                             </p>
                         </div>
-                        <p className={styles.right}>Повторите пароль, пожалуйста, это обезопасит вас с нами на случай
+                        <p className={styles.form_description}>Повторите пароль, пожалуйста, это обезопасит вас с нами
+                            на случай
                             ошибки.</p>
                     </div>
                     <hr/>
                     <div className={styles.flexRow}>
-                        <span className={styles.left}>Электронная почта</span>
-                        <div className={styles.center}>
+                        <span className={styles.form_title}>Электронная почта</span>
+                        <div className={styles.form_value}>
                             <Input error={formik.errors.email}
                                    name="email"
                                    type="text"
@@ -96,12 +96,12 @@ export const Form = memo(() => {
                                    required={true}/>
                             <p className={styles.form_errors_message}>{formik.touched.email && formik.errors.email}</p>
                         </div>
-                        <p className={styles.right}>Можно изменить адрес, указанный при регистрации. </p>
+                        <p className={styles.form_description}>Можно изменить адрес, указанный при регистрации. </p>
                     </div>
                     <div className={styles.flexRow}>
-                        <span className={styles.left}>Я согласен</span>
-                        <div className={styles.center}>
-                            <div className={styles.center__check}>
+                        <span className={styles.form_title}>Я согласен</span>
+                        <div className={styles.form_value}>
+                            <div className={styles.form_value__check}>
                                 <Checkbox
                                     checked={formik.values.checkbox}
                                     type={'checkbox'}
@@ -112,10 +112,10 @@ export const Form = memo(() => {
                             </div>
                         </div>
                     </div>
-                    <div className={styles.btnAgree}>
-                        <div className={styles.btnAgree__submit}>
+                    <div className={styles.form_btnAgree}>
+                        <div className={styles.form_btnAgree__submit}>
                             <Button type={'submit'} value={'Изменить'}/>
-                            <p>последние изменения {lastUpdateForm}</p>
+                            <p>последние изменения <br/> {lastUpdateForm}</p>
                         </div>
                     </div>
                 </div>
