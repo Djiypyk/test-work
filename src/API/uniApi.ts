@@ -1,7 +1,6 @@
 import axios, {AxiosError, AxiosResponse} from "axios";
 import {getUniT} from "../types/UniT";
 
-
 const axiosInstance = axios.create({
     baseURL: 'http://universities.hipolabs.com',
     headers: {

@@ -7,7 +7,6 @@ import {Form} from "./Feauters/Form/Form";
 import {useAppDispatch} from "./utils/customHook";
 import {getUnisS} from "./store/saga/formSaga";
 
-
 export const App = () => {
     const dispatch = useAppDispatch()
     useEffect(() => {
