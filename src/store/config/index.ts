@@ -1,5 +1,4 @@
-import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux'
-import {applyMiddleware, combineReducers, createStore, Dispatch} from 'redux'
+import {applyMiddleware, combineReducers, createStore} from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import {formReducer} from "../reducer/formReducer";
 import rootSaga from "../saga/index";
@@ -12,7 +11,6 @@ const rootReducer = combineReducers({
 })
 
 export const store = createStore(rootReducer, applyMiddleware(sagaMiddleware))
-
 sagaMiddleware.run(rootSaga)
 
 //type

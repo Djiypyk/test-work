@@ -2,14 +2,17 @@ import {CitiesT, sortCities} from "../../utils/cities";
 import obj from '../../Main/common/cities.json'
 import {ActionsFormReducerT, UserT} from "../../types/formReducerT";
 import {getUniT} from "../../types/UniT";
+import {arrWithUnisName, universities} from "../../utils/universities";
 
 const cities = sortCities(obj)
 const initialState = {
     name: 'Человек №3596941',
     status: 'Прежде чем действовать, надо понять',
     cities: cities as CitiesT[],
-    unis: [] as getUniT[],
-    arrayUniName: [] as string[],
+    unis: universities,
+    // unis: [] as getUniT[],
+    arrayUniName: arrWithUnisName,
+    // arrayUniName: [] as string[],
     user: {
         password: '',
         email: '',

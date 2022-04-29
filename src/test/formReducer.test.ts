@@ -73,18 +73,20 @@ test('uni should be set', () => {
         } as UserT,
         lastUpdateForm: '2 Апреля 2022 в 23:15:12'
     };
-    const uniArr:getUniT[] = [
+    const uniArr: getUniT[] = [
         {
-        country: 'Russian',
-        name: 'MGLU',
-        web_pages: ['www.fake.com'],
-        domains: ['localhost/3000'],
-        alpha_two_code: '247500'
-    },
+            country: 'Russian',
+            "state-province": null,
+            name: 'MGLU',
+            web_pages: ['www.fake.com'],
+            domains: ['localhost/3000'],
+            alpha_two_code: '247500'
+        },
         {
             country: 'Russia',
+            "state-province": null,
             name: 'BGAU',
-            web_pages:['www.BGAU.com'],
+            web_pages: ['www.BGAU.com'],
             domains: ['localhost/3000'],
             alpha_two_code: '247547'
         }

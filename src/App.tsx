@@ -11,7 +11,7 @@ export const App = () => {
     const dispatch = useAppDispatch()
     useEffect(() => {
         dispatch(getUnisS())
-    }, [])
+    }, [dispatch])
     return (
         <div className={styles.app_container}>
             <Header/>
